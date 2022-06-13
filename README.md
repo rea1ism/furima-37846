@@ -2,55 +2,60 @@
 
 ## users テーブル
 
-| Column             | Type    | Options     |
-| ------------------ | ------- | ----------- |
-| nickname           | string  | null: false |
-| email              | string  | null: false |
-| encrypted_password | string  | null: false |
-| familyname_kanji   | string  | null: false |
-| firstname_kanji    | string  | null: false |
-| familyname_kana    | string  | null: false |
-| firstname_kana     | string  | null: false |
-| birth_year         | integer | null: false |
-| birth_month        | integer | null: false |
-| birth_day          | integer | null: false |
+| Column                 | Type      | Options                        |
+| ---------------------- | --------- | ------------------------------ |
+| nickname               | string    | null: false                    |
+| email                  | string    | null: false, unique: true      |
+| encrypted_password     | string    | null: false                    |
+| familyname_kanji       | string    | null: false                    |
+| firstname_kanji        | string    | null: false                    |
+| familyname_kana        | string    | null: false                    |
+| firstname_kana         | string    | null: false                    |
+| birth_day              | date      | null: false                    |
 
 ### Association
 
 - has_many :items
-- has_many :comments
+- has_many :purchases
 
 ## items テーブル
 
-| Column              | Type      | Options                        |
-| ------------------- | --------- | ------------------------------ |
-| user                | reference | null: false, foreign_key: true |
-| itemname            | string    | null: false                    |
-| description         | text      | null: false                    |
-| category            | string    | null: false                    |
-| status              | string    | null: false                    |
-| transportation_cost | integer   | null: false                    |
-| shipping_pref       | string    | null: false                    |
-| leadtime            | string    | null: false                    |
-| price               | integer   | null: false                    |
-| bookmark            | boolean   | null: false                    |
-| inadequate_flag     | boolean   | null: false                    |
-| purchased_flag      | boolean   | null: false                    |
+| Column                 | Type      | Options                        |
+| ---------------------- | --------- | ------------------------------ |
+| user                   | reference | null: false, foreign_key: true |
+| item_name              | string    | null: false                    |
+| description            | text      | null: false                    |
+| category_id            | integer   | null: false                    |
+| status_id              | integer   | null: false                    |
+| transportation_cost_id | integer   | null: false                    |
+| shipping_pref_id       | integer   | null: false                    |
+| leadtime_id            | integer   | null: false                    |
+| price                  | integer   | null: false                    |
 
 ### Association
 
-- has_many :comments
 - belongs_to :user
+- has_one :purchase
 
-## comments テーブル
+## purchases テーブル
 
-| Column    | Type      | Options                        |
-| --------- | --------- | ------------------------------ |
-| text      | text      | null: false                    |
-| item      | reference | null: false, foreign_key: true |
-| user      | reference | null: false, foreign_key: true |
+| Column                 | Type      | Options                        |
+| ---------------------- | --------- | ------------------------------ |
+| item_id                | reference | null: false, foreign_key: true |
+| user_id                | reference | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :item
 - belongs_to :user
+- has_one :item
+
+## destinations テーブル
+
+| Column                 | Type      | Options                        |
+| ---------------------- | --------- | ------------------------------ |
+| destination_pref       | string    | null: false                    |
+| purchase_id            | reference | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :purchase
