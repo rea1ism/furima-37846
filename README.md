@@ -47,13 +47,19 @@
 ### Association
 
 - belongs_to :user
-- has_one :item
+- belongs_to :item
+- has_one :destination
 
 ## destinations テーブル
 
 | Column                 | Type      | Options                        |
 | ---------------------- | --------- | ------------------------------ |
-| destination_pref       | string    | null: false                    |
+| post_code              | string    | null: false                    |
+| prefecture             | string    | null: false                    |
+| city                   | string    | null: false                    |
+| street_number          | string    | null: false                    |
+| building               | string    |                                |
+| phone_number           | string    | null: false                    |
 | purchase_id            | reference | null: false, foreign_key: true |
 
 ### Association
