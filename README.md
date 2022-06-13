@@ -28,7 +28,7 @@
 | category_id            | integer   | null: false                    |
 | status_id              | integer   | null: false                    |
 | transportation_cost_id | integer   | null: false                    |
-| shipping_pref_id       | integer   | null: false                    |
+| prefecture_id          | integer   | null: false                    |
 | leadtime_id            | integer   | null: false                    |
 | price                  | integer   | null: false                    |
 
@@ -41,8 +41,8 @@
 
 | Column                 | Type      | Options                        |
 | ---------------------- | --------- | ------------------------------ |
-| item_id                | reference | null: false, foreign_key: true |
-| user_id                | reference | null: false, foreign_key: true |
+| item                   | reference | null: false, foreign_key: true |
+| user                   | reference | null: false, foreign_key: true |
 
 ### Association
 
@@ -55,12 +55,12 @@
 | Column                 | Type      | Options                        |
 | ---------------------- | --------- | ------------------------------ |
 | post_code              | string    | null: false                    |
-| prefecture             | string    | null: false                    |
+| prefecture_id          | integer   | null: false                    |
 | city                   | string    | null: false                    |
 | street_number          | string    | null: false                    |
 | building               | string    |                                |
 | phone_number           | string    | null: false                    |
-| purchase_id            | reference | null: false, foreign_key: true |
+| purchase               | reference | null: false, foreign_key: true |
 
 ### Association
 
