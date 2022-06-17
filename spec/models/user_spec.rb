@@ -57,6 +57,12 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Password is invalid")
       end
+      it 'passwordは全角文字を含むと登録できない' do
+        @user.password = 'あいうえお'
+        @user.password_confirmation = @user.password
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password is invalid")
+      end
       it 'passwordとpassword_confirmationが不一致では登録できない' do
         @user.password = 'abc1234567'
         @user.password_confirmation = 'abc123'
@@ -73,11 +79,15 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Familyname kanji can't be blank")
       end
-      it 'お名前(全角)は、半角では登録できない' do
+      it 'お名前(全角)の名字は、半角では登録できない' do
         @user.familyname_kanji = 'yamada'
-        @user.firstname_kanji = 'taro'
         @user.valid?
         expect(@user.errors.full_messages).to include("Familyname kanji is invalid")
+      end
+      it 'お名前(全角)の名前は、半角では登録できない' do
+        @user.firstname_kanji = 'taro'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Firstname kanji is invalid")
       end
       it 'お名前カナ(全角)は、名字だけでは登録できない' do
         @user.firstname_kana = ''
@@ -89,11 +99,15 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Familyname kana can't be blank")
       end
-      it 'お名前カナ(全角)は、半角では登録できない' do
+      it 'お名前カナ(全角)の名字は、半角では登録できない' do
         @user.familyname_kana = 'yamada'
-        @user.firstname_kana = 'taro'
         @user.valid?
         expect(@user.errors.full_messages).to include("Familyname kana is invalid")
+      end
+      it 'お名前カナ(全角)の名前は、半角では登録できない' do
+        @user.firstname_kana = 'taro'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Firstname kana is invalid")
       end
       it '生年月日が空では登録できない' do
         @user.birthday = ''
