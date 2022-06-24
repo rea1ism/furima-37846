@@ -9,7 +9,10 @@ class Item < ApplicationRecord
   validates :price,                  presence: true, numericality: { in: 300..9999999}, format: { with: /\A[0-9]+\z/ }
 
   belongs_to :user
+  has_one_attached :image
 
+  validates :image, presence: { message: 'をアップロードしてください' }
+  
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category, :status, :transportation_cost, :prefecture
 end
