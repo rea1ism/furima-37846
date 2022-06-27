@@ -6,7 +6,7 @@ class Item < ApplicationRecord
   validates :transportation_cost_id, numericality: { other_than: 1 }
   validates :prefecture_id,          numericality: { other_than: 1 }
   validates :leadtime_id,            numericality: { other_than: 1 }
-  validates :price,                  presence: true, numericality: { in: 300..9999999}, format: { with: /\A[0-9]+\z/ }
+  validates :price,                  presence: true, numericality: { in: 300..9_999_999 }, format: { with: /\A[0-9]+\z/ }
 
   belongs_to :user
   has_one_attached :image

@@ -6,7 +6,7 @@ def basic_pass(path)
   visit "http://#{username}:#{password}@#{Capybara.current_session.server.host}:#{Capybara.current_session.server.port}#{path}"
 end
 
-RSpec.describe "Items", type: :system do
+RSpec.describe Items, type: :system do
   before do
     @user = FactoryBot.create(:user)
   end
@@ -14,7 +14,7 @@ RSpec.describe "Items", type: :system do
   describe '商品投稿' do
     context '商品投稿できないとき' do
       it 'すべての項目がブランクでは投稿できず、エラーメッセージが表示される' do
-        #basic認証通過
+        # basic認証通過
         basic_pass root_path
         # ログインする
         visit new_user_session_path
