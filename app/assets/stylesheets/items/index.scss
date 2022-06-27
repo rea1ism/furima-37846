@@ -308,4 +308,26 @@ a {
   font-size: 2vh;
 }
 
-/* //商品一覧 */
+/* 出品ボタン */
+.purchase-btn {
+  position: fixed;
+  height: 115.5px;
+  width: 120px;
+  right: 32px;
+  bottom: 32px;
+  background-color: #3ccace;
+  border-radius: 5px;
+  padding: 15px;
+  text-align: center;
+}
+
+.purchase-btn-text {
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.purchase-btn-icon {
+  height: 50px;
+  width: 54px;
+  margin-top: 5px;
+}
