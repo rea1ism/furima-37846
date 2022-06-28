@@ -63,7 +63,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Price must be an integer")
       end
       it 'priceが300円未満では出品できない' do
-        @item.price = 200
+        @item.price = 299
         @item.valid?
         expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
       end
