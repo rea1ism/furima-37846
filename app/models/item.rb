@@ -18,4 +18,5 @@ class Item < ApplicationRecord
   belongs_to :status
   belongs_to :transportation_cost
   belongs_to :prefecture
+  belongs_to :leadtime
 end
