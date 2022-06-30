@@ -30,27 +30,27 @@ RSpec.describe Item, type: :model do
       it 'category_idが1では出品できない' do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category must be other than 1")
+        expect(@item.errors.full_messages).to include("Category must be selected")
       end
       it 'status_idが1では出品できない' do
         @item.status_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Status must be other than 1")
+        expect(@item.errors.full_messages).to include("Status must be selected")
       end
       it 'transportation_cost_idが1では出品できない' do
         @item.transportation_cost_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Transportation cost must be other than 1")
+        expect(@item.errors.full_messages).to include("Transportation cost must be selected")
       end
       it 'prefecture_idが1では出品できない' do
         @item.prefecture_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Prefecture must be other than 1")
+        expect(@item.errors.full_messages).to include("Prefecture must be selected")
       end
       it 'leadtime_idが1では出品できない' do
         @item.leadtime_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Leadtime must be other than 1")
+        expect(@item.errors.full_messages).to include("Leadtime must be selected")
       end
       it 'priceが空では出品できない' do
         @item.price = ''
