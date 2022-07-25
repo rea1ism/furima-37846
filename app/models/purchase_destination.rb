@@ -10,10 +10,10 @@ class PurchaseDestination
     validates :user_id
     validates :item_id
   end
-  validates :prefecture_id, numericality: { other_than: 1, message: "must be selected" }
+  validates :prefecture_id, numericality: { other_than: 0, message: "must be selected" }
 
   def save
-    purchase = Purchase.create(item_id: item_id, user_id: user_id)
+    purchase = Purchase.create(user_id: user_id, item_id: item_id)
     Destination.create(post_code: post_code, city: city, street_number: street_number, phone_number: phone_number, purchase_id: purchase.id)
   end
 end
