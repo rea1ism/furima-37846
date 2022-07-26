@@ -12,7 +12,6 @@ class ItemsController < ApplicationController
   end
 
   def create
-    binding.pry
     @item = Item.new(item_params)
     if @item.save
       redirect_to root_path
@@ -51,6 +50,9 @@ class ItemsController < ApplicationController
   def move_to_index
     unless current_user == @item.user
       redirect_to action: :index
+    end
+    unless @item.purchase == nil
+      redirect_to root_path
     end
   end
 
