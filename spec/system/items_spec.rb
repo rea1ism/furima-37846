@@ -27,7 +27,6 @@ RSpec.describe Items, type: :system do
         find('input[name="commit"]').click
         # 遷移後のページがnew_item_pathであることを検証
         expect(current_path).to eq(items_path)
-        binding.pry
         # エラーメッセージが表示されているかどうか検証
       end
     end

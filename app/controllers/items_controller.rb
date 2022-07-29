@@ -38,7 +38,7 @@ class ItemsController < ApplicationController
     if current_user == @item.user
       @item.destroy
     end
-      redirect_to root_path
+    redirect_to root_path
   end
 
   private
@@ -50,6 +50,9 @@ class ItemsController < ApplicationController
   def move_to_index
     unless current_user == @item.user
       redirect_to action: :index
+    end
+    unless @item.purchase == nil
+      redirect_to root_path
     end
   end
 
