@@ -228,4 +228,8 @@
   font-size: 13px;
 }
 
-
+img{
+  height: 200px;
+  width: 200px;
+  object-fit: contain;
+}
